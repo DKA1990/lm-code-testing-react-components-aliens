@@ -5,7 +5,7 @@ export interface ErrorMessageProps {
 const ErrorMessage : React.FC<ErrorMessageProps> = ({ errorText }) => {
     return (
         <div className="error-container">
-            <p>{errorText}</p>
+            <label className="error-message">{errorText}</label>
         </div>
     )
 }

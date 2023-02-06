@@ -1,4 +1,5 @@
-import { ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
+import ErrorMessage from "./ErrorMessage";
 
 export interface SpeciesNameProps {
     speciesName: string;
@@ -7,14 +8,16 @@ export interface SpeciesNameProps {
 
 const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, changeSpeciesName }) => {
 
-    const validate = (species: string) : string => {
+    const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
+
+    const validate = (species: string) : string | undefined => {
         if (species.length < 3 || species.length > 23) {
-            return 'Species name must be between 3 and 23 characters!';
+            return 'Species name must be between 3 and 23 characters! OBEY US EARTHLINGS!';
         }
-        if (/^[a-zA-Z]+$/.test(species)) {
+        if (!/^[a-zA-Z]+$/.test(species)) {
             return 'Species name can only contain letters! No numbers or special characters puny human!';
         }
-        return '';
+        return undefined;
     }
 
     return (
@@ -26,10 +29,12 @@ const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, changeSpeciesNa
                 aria-label="species" 
                 value={speciesName} 
                 onChange={(e) => {
-                    validate(e.target.value);
+                    const errorMessage = validate(e.target.value);
+                    setErrorMessage(errorMessage);
                     changeSpeciesName(e);
                 }}>
             </input>
+            <ErrorMessage errorText={errorMessage} />
         </div>
     );
 }

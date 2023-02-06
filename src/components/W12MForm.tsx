@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import W12MHeader from './W12MHeader';
 import SpeciesName from './SpeciesName';
 import PlanetName from './PlanetName';
@@ -6,15 +6,19 @@ import BeingsNumber from './BeingsNumber';
 import TwoPlusTwo from './TwoPlusTwo';
 import SparingReasons from './SparingReasons';
 
-const W12MForm = () => {
+export interface W12MFormProps {
+	submitForm?: (e: FormEvent<HTMLFormElement>) => void;
+}
+
+const W12MForm : React.FC<W12MFormProps> = ({ submitForm }) => {
 
 	const [speciesName, setSpeciesName] = useState<string>('');
 	const [planetName, setPlanetName] = useState<string>('');
 	const [beingsNumber, setBeingsNumber] = useState<string>('');
-	const [twoPlusTwo, setTwoPlusTwo] = useState<string>('');
+	const [twoPlusTwo, setTwoPlusTwo] = useState<string>('4');
 	const [sparingReasons, setSparingReasons] = useState<string>('');
 
-	const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+	submitForm = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		console.log(`Species Name: ${speciesName}`);
 		console.log(`Planet Name: ${planetName}`);

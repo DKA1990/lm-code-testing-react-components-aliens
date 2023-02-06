@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-interface SparingReasonsProps {
+export interface SparingReasonsProps {
     spareReasons: string;
     changeSpareReasons: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
@@ -10,7 +10,7 @@ const SparingReasons : React.FC<SparingReasonsProps> = ({ spareReasons, changeSp
     return (
         <div className="input-container">
             <label htmlFor="reasons">Reason For Sparing: </label>
-            <textarea id="reasons" value={spareReasons} onChange={changeSpareReasons}></textarea>
+            <textarea id="reasons" aria-label="reasons" value={spareReasons} onChange={changeSpareReasons}></textarea>
         </div>
     );
 }

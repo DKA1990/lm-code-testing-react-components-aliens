@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from "react";
+import { validateBeings } from "../validate";
 import ErrorMessage from "./ErrorMessage";
 
 export interface BeingsNumberProps {
@@ -10,16 +11,6 @@ const BeingsNumber : React.FC<BeingsNumberProps> = ({ beingsNumber, changeBeings
 
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
-    const validate = (beings: string) : string | undefined => {
-        if (!/^[0-9]+$/.test(beings)) {
-            return 'Number of beings can only contain numbers! Any species counting with forbidden characters will meets their DEMISE!';
-        }
-        if (parseInt(beings) < 1000000000) {
-            return 'Feeble planets contained fewer than 1000000000 beings will be harvested of all matter then destroyed!';
-        }
-        return undefined;
-    }
-
     return (
         <div className="input-container">
             <label htmlFor="beings">Number of Beings: </label>
@@ -29,7 +20,7 @@ const BeingsNumber : React.FC<BeingsNumberProps> = ({ beingsNumber, changeBeings
                 aria-label="beings" 
                 value={beingsNumber} 
                 onChange={(e) => {
-                    const errorMessage = validate(e.target.value);
+                    const errorMessage = validateBeings(e.target.value);
                     setErrorMessage(errorMessage);
                     changeBeingsNumber(e);
                 }}>                    

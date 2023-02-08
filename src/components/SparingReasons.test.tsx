@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { validateReasons } from '../validate';
 import SparingReasons, { SparingReasonsProps } from './SparingReasons';
 
 const requiredProps : SparingReasonsProps = {
@@ -42,4 +43,15 @@ test('onChange called when given correct prop input', async () => {
     }
     // Called once for each character
     expect(mockChange).toHaveBeenCalledTimes(6);
+});
+
+describe('when given a string, validateReasons returns correct error message', () => {
+    test('when given string "Some sort of valid reasoning of appropriate length", returns no error', () => {
+        const errorMessage : string | undefined = validateReasons('Some sort of valid reasoning of appropriate length');
+        expect(errorMessage).toBe(undefined);
+    });
+    test('when given string "Invalid", returns error', () => {
+        const errorMessage : string | undefined = validateReasons('Invalid');
+        expect(errorMessage).toBe('Planet name must be between 17 and 153 characters! Plead your case quickly meatsac!');
+    });
 });

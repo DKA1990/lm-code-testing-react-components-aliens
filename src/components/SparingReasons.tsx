@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from "react";
+import { validateReasons } from "../validate";
 import ErrorMessage from "./ErrorMessage";
 
 export interface SparingReasonsProps {
@@ -10,13 +11,6 @@ const SparingReasons : React.FC<SparingReasonsProps> = ({ spareReasons, changeSp
 
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
-    const validate = (reasons: string) : string | undefined => {
-        if (reasons.length < 17 || reasons.length > 153) {
-            return 'Planet name must be between 17 and 153 characters! Plead your case quickly meatsac!';
-        }
-        return undefined;
-    }
-
     return (
         <div className="input-container">
             <label htmlFor="reasons">Reason For Sparing: </label>
@@ -25,7 +19,7 @@ const SparingReasons : React.FC<SparingReasonsProps> = ({ spareReasons, changeSp
                 aria-label="reasons" 
                 value={spareReasons} 
                 onChange={(e) => {
-                    const errorMessage = validate(e.target.value);
+                    const errorMessage = validateReasons(e.target.value);
                     setErrorMessage(errorMessage);
                     changeSpareReasons(e);
                 }}>

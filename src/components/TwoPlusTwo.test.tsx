@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { validateTwoPlusTwo } from '../validate';
 import TwoPlusTwo, { TwoPlusTwoProps } from './TwoPlusTwo';
 
 const requiredProps : TwoPlusTwoProps = {
@@ -41,4 +42,15 @@ test('onChange called when given correct prop input', async () => {
         await userEvent.selectOptions(inputField, ('Not 4'));
     }
     expect(mockChange).toHaveBeenCalledTimes(1);
+});
+
+describe('when given a string, validateTwoPlusTwo returns correct error message', () => {
+    test('when given string "4", returns no error', () => {
+        const errorMessage : string | undefined = validateTwoPlusTwo('4');
+        expect(errorMessage).toBe(undefined);
+    });
+    test('when given string "Not 4", returns error', () => {
+        const errorMessage : string | undefined = validateTwoPlusTwo('Not 4');
+        expect(errorMessage).toBe('Lack of basic maths knowledge = OBLITERATION!');
+    });
 });

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { validateBeings } from '../validate';
 import BeingsNumber, { BeingsNumberProps } from './BeingsNumber';
 
 const requiredProps : BeingsNumberProps = {
@@ -42,4 +43,19 @@ test('onChange called when given correct prop input', async () => {
     }
     // Called once for each character
     expect(mockChange).toHaveBeenCalledTimes(10);
+});
+
+describe('when given a string, validateBeings returns correct error message', () => {
+    test('when given string "7000000000", returns no error', () => {
+        const errorMessage : string | undefined = validateBeings('7000000000');
+        expect(errorMessage).toBe(undefined);
+    });
+    test('when given string "1", returns number to small error', () => {
+        const errorMessage : string | undefined = validateBeings('1');
+        expect(errorMessage).toBe('Feeble planets contained fewer than 1000000000 beings will be harvested of all matter then destroyed!');
+    });
+    test('when given string "NotANumber", returns no special characters error', () => {
+        const errorMessage : string | undefined = validateBeings('NotANumber');
+        expect(errorMessage).toBe('Number of beings can only contain numbers! Any species counting with forbidden characters will meets their DEMISE!');
+    });
 });

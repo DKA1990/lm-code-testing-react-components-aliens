@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from "react";
+import { validateTwoPlusTwo } from "../validate";
 import ErrorMessage from "./ErrorMessage";
 
 export interface TwoPlusTwoProps {
@@ -10,13 +11,6 @@ const TwoPlusTwo : React.FC<TwoPlusTwoProps> = ({ twoPlusTwo, changeTwoPlusTwoVa
 
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
-    const validate = (answer: string) : string | undefined => {
-        if (answer !== '4') {
-            return 'Lack of basic maths knowledge = OBLITERATION!';
-        }        
-        return undefined;
-    }
-
     return (
         <div className="input-container">
             <label htmlFor="two-plus-two">What is 2+2? </label>
@@ -25,7 +19,7 @@ const TwoPlusTwo : React.FC<TwoPlusTwoProps> = ({ twoPlusTwo, changeTwoPlusTwoVa
                 aria-label="two-plus-two" 
                 value={twoPlusTwo} 
                 onChange={(e) => {
-                    const errorMessage = validate(e.target.value);
+                    const errorMessage = validateTwoPlusTwo(e.target.value);
                     setErrorMessage(errorMessage);
                     changeTwoPlusTwoValue(e);
                 }}>

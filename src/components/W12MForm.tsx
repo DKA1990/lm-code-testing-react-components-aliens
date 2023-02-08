@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import W12MHeader from './W12MHeader';
 import SpeciesName from './SpeciesName';
 import PlanetName from './PlanetName';

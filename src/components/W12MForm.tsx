@@ -64,7 +64,7 @@ const W12MForm : React.FC = () => {
 					spareReasons={sparingReasons}
 					changeSpareReasons={(event: any) => setSparingReasons(event.target.value)}
 				/>
-				<button type="submit" id="submit">Submit</button>
+				<button className="w12MForm__submit-button" type="submit" id="submit">Submit</button>
 			</form>
 		</section>
 	);

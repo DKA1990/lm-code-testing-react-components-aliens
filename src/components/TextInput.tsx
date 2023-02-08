@@ -34,7 +34,7 @@ const TextInput : React.FC<TextInputProps> = ({ name, stateName, change }) => {
         }
         retHtml = 
             <div className="input-container">
-                <label htmlFor={ariaText}>{labelText}</label>
+                <label className="input-container__label" htmlFor={ariaText}>{labelText}</label>
                 <input 
                     className="input-container__text"
                     type="text" 

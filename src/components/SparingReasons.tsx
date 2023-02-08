@@ -13,8 +13,9 @@ const SparingReasons : React.FC<SparingReasonsProps> = ({ spareReasons, changeSp
 
     return (
         <div className="input-container">
-            <label htmlFor="reasons">Reason For Sparing: </label>
+            <label className="input-container__label" htmlFor="reasons">Reason For Sparing: </label>
             <textarea 
+                className="input-container__text"
                 id="reasons" 
                 aria-label="reasons" 
                 value={spareReasons} 

@@ -13,8 +13,9 @@ const TwoPlusTwo : React.FC<TwoPlusTwoProps> = ({ twoPlusTwo, changeTwoPlusTwoVa
 
     return (
         <div className="input-container">
-            <label htmlFor="two-plus-two">What is 2+2? </label>
+            <label className="input-container__label" htmlFor="two-plus-two">What is 2+2? </label>
             <select 
+                className="input-container__text"
                 id="two-plus-two" 
                 aria-label="two-plus-two" 
                 value={twoPlusTwo} 

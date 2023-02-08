@@ -6,11 +6,11 @@ import BeingsNumber from './BeingsNumber';
 import TwoPlusTwo from './TwoPlusTwo';
 import SparingReasons from './SparingReasons';
 
-export interface W12MFormProps {
+/*export interface W12MFormProps {
 	submitForm?: (e: FormEvent<HTMLFormElement>) => void;
-}
+}*/
 
-const W12MForm : React.FC<W12MFormProps> = ({ submitForm }) => {
+const W12MForm : React.FC = () => {
 
 	const [speciesName, setSpeciesName] = useState<string>('');
 	const [planetName, setPlanetName] = useState<string>('');
@@ -18,7 +18,7 @@ const W12MForm : React.FC<W12MFormProps> = ({ submitForm }) => {
 	const [twoPlusTwo, setTwoPlusTwo] = useState<string>('4');
 	const [sparingReasons, setSparingReasons] = useState<string>('');
 
-	submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+	const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		console.log(`Species Name: ${speciesName}`);
 		console.log(`Planet Name: ${planetName}`);

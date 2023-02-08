@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import W12MHeader from './W12MHeader';
-import SpeciesName from './SpeciesName';
-import PlanetName from './PlanetName';
-import BeingsNumber from './BeingsNumber';
 import TwoPlusTwo from './TwoPlusTwo';
 import SparingReasons from './SparingReasons';
+import TextInput from './TextInput';
 
 /*export interface W12MFormProps {
 	submitForm?: (e: FormEvent<HTMLFormElement>) => void;
@@ -31,7 +29,22 @@ const W12MForm : React.FC = () => {
 		<section className='w12MForm'>
 			<W12MHeader />
 			<form onSubmit={submitForm}>
-				<SpeciesName 
+				<TextInput
+					name='species'
+					stateName={speciesName}
+					change={(event: any) => setSpeciesName(event.target.value)}
+				/>
+				<TextInput
+					name='planet'
+					stateName={planetName}
+					change={(event: any) => setPlanetName(event.target.value)}
+				/>
+				<TextInput
+					name='beings'
+					stateName={beingsNumber}
+					change={(event: any) => setBeingsNumber(event.target.value)}
+				/>
+				{/*<SpeciesName 
 					speciesName={speciesName}
 					changeSpeciesName={(event: any) => setSpeciesName(event.target.value)}
 				/>
@@ -42,7 +55,7 @@ const W12MForm : React.FC = () => {
 				<BeingsNumber
 					beingsNumber={beingsNumber}
 					changeBeingsNumber={(event: any) => setBeingsNumber(event.target.value)}
-				/>
+				/>*/}
 				<TwoPlusTwo
 					twoPlusTwo={twoPlusTwo}
 					changeTwoPlusTwoValue={(event: any) => setTwoPlusTwo(event.target.value)}

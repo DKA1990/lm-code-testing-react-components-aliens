@@ -15,6 +15,7 @@ const SpeciesName : React.FC<SpeciesNameProps> = ({ speciesName, changeSpeciesNa
         <div className="input-container">
             <label htmlFor="species">Species Name: </label>
             <input 
+                className="input-container__text"
                 type="text" 
                 id="species" 
                 aria-label="species" 

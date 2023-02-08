@@ -15,6 +15,7 @@ const PlanetName : React.FC<PlanetNameProps> = ({ planetName, changePlanetName }
         <div className="input-container">
             <label htmlFor="planet">Planet Name: </label>
             <input 
+                className="input-container__text"
                 type="text" 
                 id="planet" 
                 aria-label="planet" 

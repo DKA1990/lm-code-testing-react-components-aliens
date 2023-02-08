@@ -15,6 +15,7 @@ const BeingsNumber : React.FC<BeingsNumberProps> = ({ beingsNumber, changeBeings
         <div className="input-container">
             <label htmlFor="beings">Number of Beings: </label>
             <input 
+                className="input-container__text"
                 type="text" 
                 id="beings" 
                 aria-label="beings" 

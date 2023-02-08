@@ -4,10 +4,6 @@ import TwoPlusTwo from './TwoPlusTwo';
 import SparingReasons from './SparingReasons';
 import TextInput from './TextInput';
 
-/*export interface W12MFormProps {
-	submitForm?: (e: FormEvent<HTMLFormElement>) => void;
-}*/
-
 const W12MForm : React.FC = () => {
 
 	const [speciesName, setSpeciesName] = useState<string>('');
@@ -44,18 +40,6 @@ const W12MForm : React.FC = () => {
 					stateName={beingsNumber}
 					change={(event: any) => setBeingsNumber(event.target.value)}
 				/>
-				{/*<SpeciesName 
-					speciesName={speciesName}
-					changeSpeciesName={(event: any) => setSpeciesName(event.target.value)}
-				/>
-				<PlanetName
-					planetName={planetName}
-					changePlanetName={(event: any) => setPlanetName(event.target.value)}
-				/>
-				<BeingsNumber
-					beingsNumber={beingsNumber}
-					changeBeingsNumber={(event: any) => setBeingsNumber(event.target.value)}
-				/>*/}
 				<TwoPlusTwo
 					twoPlusTwo={twoPlusTwo}
 					changeTwoPlusTwoValue={(event: any) => setTwoPlusTwo(event.target.value)}

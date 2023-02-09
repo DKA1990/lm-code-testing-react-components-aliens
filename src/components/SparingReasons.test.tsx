@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { validateReasons } from '../validate';
 import SparingReasons, { SparingReasonsProps } from './SparingReasons';
 
 const requiredProps : SparingReasonsProps = {

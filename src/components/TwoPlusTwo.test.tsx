@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { validateTwoPlusTwo } from '../validate';
 import TwoPlusTwo, { TwoPlusTwoProps } from './TwoPlusTwo';
 
 const requiredProps : TwoPlusTwoProps = {

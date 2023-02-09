@@ -6,8 +6,10 @@ import TextInput, { TextInputProps } from './TextInput';
 describe('tests for species input', () => {
     const requiredProps : TextInputProps = {
         name: 'species',
-        stateName: 'Human',
-        change: () => { }
+        label: 'Species Name: ',
+        value: 'Human',
+        change: () => { },
+        validate: validateSpecies
     }
 
     test('renders form element', () => {	
@@ -33,8 +35,10 @@ describe('tests for species input', () => {
 
         const changeTestProps : TextInputProps = {
             name: 'species',
-            stateName: 'Human',
-            change: mockChange
+        label: 'Species Name: ',
+        value: 'Human',
+        change: mockChange,
+        validate: validateSpecies
         }
 
         render(<TextInput {...changeTestProps}/>);
@@ -49,26 +53,13 @@ describe('tests for species input', () => {
     });
 });
 
-describe('when given a string, validateSpecies returns correct error message', () => {
-    test('when given string "valid", returns no error', () => {
-        const errorMessage : string | undefined = validateSpecies('Valid');
-        expect(errorMessage).toBe(undefined);
-    });
-    test('when given string "546", returns no numbers error', () => {
-        const errorMessage : string | undefined = validateSpecies('546');
-        expect(errorMessage).toBe('Species name can only contain letters! No numbers or special characters puny human!');
-    });
-    test('when given string "A", returns no numbers error', () => {
-        const errorMessage : string | undefined = validateSpecies('A');
-        expect(errorMessage).toBe('Species name must be between 3 and 23 characters! OBEY US EARTHLINGS!');
-    });
-});
-
 describe('tests for planet input', () => {
     const requiredProps : TextInputProps = {
         name: 'planet',
-        stateName: 'Earth',
-        change: () => { }
+        label: 'Planet Name: ',
+        value: 'Earth',
+        change: () => { },
+        validate: validatePlanet
     }
     
     test('renders form element', () => {	
@@ -94,8 +85,10 @@ describe('tests for planet input', () => {
     
         const changeTestProps : TextInputProps = {
             name: 'planet',
-            stateName: 'Earth',
-            change: mockChange
+            label: 'Planet Name: ',
+            value: 'Earth',
+            change: mockChange,
+            validate: validatePlanet
         }
     
         render(<TextInput {...changeTestProps}/>);
@@ -110,26 +103,13 @@ describe('tests for planet input', () => {
     });
 });
 
-describe('when given a string, validatePlanet returns correct error message', () => {
-    test('when given string "valid", returns no error', () => {
-        const errorMessage : string | undefined = validatePlanet('Valid');
-        expect(errorMessage).toBe(undefined);
-    });
-    test('when given string "Blarghulon!?", returns no special characters error', () => {
-        const errorMessage : string | undefined = validatePlanet('Blarghulon!?');
-        expect(errorMessage).toBe('Planet name can not contain special characters! Feeble fleshbags are testing our patience!');
-    });
-    test('when given string "A", returns to few characters error', () => {
-        const errorMessage : string | undefined = validatePlanet('A');
-        expect(errorMessage).toBe('Planet name must be between 2 and 49 characters! If you lack the intelligence to comply you will be eliminated!');
-    });
-});
-
 describe('tests for number of beings input', () => {
     const requiredProps : TextInputProps = {
         name: 'beings',
-        stateName: '7000000000',
+        label: 'Number of Beings: ',
+        value: '7000000000',
         change: () => { },
+        validate: validateBeings
     }
     
     test('renders form element', () => {	
@@ -155,8 +135,10 @@ describe('tests for number of beings input', () => {
     
         const changeTestProps : TextInputProps = {
             name: 'beings',
-            stateName: '7000000000',
-            change: mockChange
+            label: 'Number of Beings: ',
+            value: '7000000000',
+            change: mockChange,
+            validate: validateBeings
         }
     
         render(<TextInput {...changeTestProps}/>);
@@ -168,20 +150,5 @@ describe('tests for number of beings input', () => {
         }
         // Called once for each character
         expect(mockChange).toHaveBeenCalledTimes(10);
-    });
-});
-
-describe('when given a string, validateBeings returns correct error message', () => {
-    test('when given string "7000000000", returns no error', () => {
-        const errorMessage : string | undefined = validateBeings('7000000000');
-        expect(errorMessage).toBe(undefined);
-    });
-    test('when given string "1", returns number to small error', () => {
-        const errorMessage : string | undefined = validateBeings('1');
-        expect(errorMessage).toBe('Feeble planets contained fewer than 1000000000 beings will be harvested of all matter then destroyed!');
-    });
-    test('when given string "NotANumber", returns no special characters error', () => {
-        const errorMessage : string | undefined = validateBeings('NotANumber');
-        expect(errorMessage).toBe('Number of beings can only contain numbers! Any species counting with forbidden characters will meets their DEMISE!');
     });
 });

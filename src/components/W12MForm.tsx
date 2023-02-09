@@ -3,6 +3,7 @@ import W12MHeader from './W12MHeader';
 import TwoPlusTwo from './TwoPlusTwo';
 import SparingReasons from './SparingReasons';
 import TextInput from './TextInput';
+import { validateBeings, validatePlanet, validateSpecies } from '../validate';
 
 const W12MForm : React.FC = () => {
 
@@ -27,18 +28,24 @@ const W12MForm : React.FC = () => {
 			<form onSubmit={submitForm}>
 				<TextInput
 					name='species'
-					stateName={speciesName}
+					value={speciesName}
+					label='Species Name: '
 					change={(event: any) => setSpeciesName(event.target.value)}
+					validate={validateSpecies}
 				/>
 				<TextInput
 					name='planet'
-					stateName={planetName}
+					value={planetName}
+					label='Planet Name: '
 					change={(event: any) => setPlanetName(event.target.value)}
+					validate={validatePlanet}
 				/>
 				<TextInput
 					name='beings'
-					stateName={beingsNumber}
+					value={beingsNumber}
+					label='Number of Beings: '
 					change={(event: any) => setBeingsNumber(event.target.value)}
+					validate={validateBeings}
 				/>
 				<TwoPlusTwo
 					twoPlusTwo={twoPlusTwo}

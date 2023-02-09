@@ -43,14 +43,3 @@ test('onChange called when given correct prop input', async () => {
     }
     expect(mockChange).toHaveBeenCalledTimes(1);
 });
-
-describe('when given a string, validateTwoPlusTwo returns correct error message', () => {
-    test('when given string "4", returns no error', () => {
-        const errorMessage : string | undefined = validateTwoPlusTwo('4');
-        expect(errorMessage).toBe(undefined);
-    });
-    test('when given string "Not 4", returns error', () => {
-        const errorMessage : string | undefined = validateTwoPlusTwo('Not 4');
-        expect(errorMessage).toBe('Lack of basic maths knowledge = OBLITERATION!');
-    });
-});

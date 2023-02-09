@@ -1,46 +1,28 @@
 import { useState, ChangeEvent } from "react";
-import { validateSpecies, validatePlanet, validateBeings } from "../validate";
 import ErrorMessage from "./ErrorMessage";
 
 export interface TextInputProps {
     name: string;
-    stateName: string;
+    value: string;
+    label: string;
     change: (e: ChangeEvent<HTMLInputElement>) => void;
+    validate: (input: string) => string | undefined;
 }
 
-const TextInput : React.FC<TextInputProps> = ({ name, stateName, change }) => {
+const TextInput : React.FC<TextInputProps> = ({ name, value, label, change, validate }) => {
 
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
     const setValues = () => {
-        let labelText : string = '';
-        let ariaText : string = name;
-        let retHtml : JSX.Element;
-        let validate : (input: string) => string | undefined;
-    
-        switch(name) {
-            case 'species':
-                labelText = 'Species Name: ';
-                validate = validateSpecies;
-                break;
-            case 'planet':
-                labelText = 'Planet Name: ';
-                validate = validatePlanet;
-                break;
-            case 'beings':
-                labelText = 'Number of Beings: ';
-                validate = validateBeings;
-                break;
-        }
-        retHtml = 
+        return <>
             <div className="input-container">
-                <label className="input-container__label" htmlFor={ariaText}>{labelText}</label>
+                <label className="input-container__label" htmlFor={name}>{label}</label>
                 <input 
                     className="input-container__text"
                     type="text" 
-                    id={ariaText} 
-                    aria-label={ariaText}
-                    value={stateName} 
+                    id={name} 
+                    aria-label={name}
+                    value={value} 
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         const errorMessage = validate(e.target.value);
                         setErrorMessage(errorMessage);
@@ -48,9 +30,9 @@ const TextInput : React.FC<TextInputProps> = ({ name, stateName, change }) => {
                     }}>
                 </input>
                 <ErrorMessage errorText={errorMessage} />
-            </div>;
-
-            return retHtml;
+            </div>
+        </>;
+                
     }    
 
     return (

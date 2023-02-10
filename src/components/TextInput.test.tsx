@@ -8,8 +8,8 @@ describe('tests for species input', () => {
         name: 'species',
         label: 'Species Name: ',
         value: 'Human',
-        change: () => { },
-        validate: validateSpecies
+        handleChange: () => { },
+        performValidate: validateSpecies
     }
 
     test('renders form element', () => {	
@@ -37,8 +37,8 @@ describe('tests for species input', () => {
             name: 'species',
         label: 'Species Name: ',
         value: 'Human',
-        change: mockChange,
-        validate: validateSpecies
+        handleChange: mockChange,
+        performValidate: validateSpecies
         }
 
         render(<TextInput {...changeTestProps}/>);
@@ -58,8 +58,8 @@ describe('tests for planet input', () => {
         name: 'planet',
         label: 'Planet Name: ',
         value: 'Earth',
-        change: () => { },
-        validate: validatePlanet
+        handleChange: () => { },
+        performValidate: validatePlanet
     }
     
     test('renders form element', () => {	
@@ -87,8 +87,8 @@ describe('tests for planet input', () => {
             name: 'planet',
             label: 'Planet Name: ',
             value: 'Earth',
-            change: mockChange,
-            validate: validatePlanet
+            handleChange: mockChange,
+            performValidate: validatePlanet
         }
     
         render(<TextInput {...changeTestProps}/>);
@@ -108,8 +108,8 @@ describe('tests for number of beings input', () => {
         name: 'beings',
         label: 'Number of Beings: ',
         value: '7000000000',
-        change: () => { },
-        validate: validateBeings
+        handleChange: () => { },
+        performValidate: validateBeings
     }
     
     test('renders form element', () => {	
@@ -137,8 +137,8 @@ describe('tests for number of beings input', () => {
             name: 'beings',
             label: 'Number of Beings: ',
             value: '7000000000',
-            change: mockChange,
-            validate: validateBeings
+            handleChange: mockChange,
+            performValidate: validateBeings
         }
     
         render(<TextInput {...changeTestProps}/>);

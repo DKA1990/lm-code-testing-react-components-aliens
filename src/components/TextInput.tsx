@@ -5,11 +5,11 @@ export interface TextInputProps {
     name: string;
     value: string;
     label: string;
-    change: (e: ChangeEvent<HTMLInputElement>) => void;
-    validate: (input: string) => string | undefined;
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    performValidate: (input: string) => string | undefined;
 }
 
-const TextInput : React.FC<TextInputProps> = ({ name, value, label, change, validate }) => {
+const TextInput : React.FC<TextInputProps> = ({ name, value, label, handleChange, performValidate }) => {
 
     const [ errorMessage, setErrorMessage ] = useState<string | undefined>();
 
@@ -24,9 +24,9 @@ const TextInput : React.FC<TextInputProps> = ({ name, value, label, change, vali
                     aria-label={name}
                     value={value} 
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        const errorMessage = validate(e.target.value);
+                        const errorMessage = performValidate(e.target.value);
                         setErrorMessage(errorMessage);
-                        change(e);
+                        handleChange(e);
                     }}>
                 </input>
                 <ErrorMessage errorText={errorMessage} />

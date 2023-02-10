@@ -30,22 +30,22 @@ const W12MForm : React.FC = () => {
 					name='species'
 					value={speciesName}
 					label='Species Name: '
-					change={(event: any) => setSpeciesName(event.target.value)}
-					validate={validateSpecies}
+					handleChange={(event: any) => setSpeciesName(event.target.value)}
+					performValidate={validateSpecies}
 				/>
 				<TextInput
 					name='planet'
 					value={planetName}
 					label='Planet Name: '
-					change={(event: any) => setPlanetName(event.target.value)}
-					validate={validatePlanet}
+					handleChange={(event: any) => setPlanetName(event.target.value)}
+					performValidate={validatePlanet}
 				/>
 				<TextInput
 					name='beings'
 					value={beingsNumber}
 					label='Number of Beings: '
-					change={(event: any) => setBeingsNumber(event.target.value)}
-					validate={validateBeings}
+					handleChange={(event: any) => setBeingsNumber(event.target.value)}
+					performValidate={validateBeings}
 				/>
 				<TwoPlusTwo
 					twoPlusTwo={twoPlusTwo}
